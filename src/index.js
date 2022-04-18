@@ -4,6 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+let dialogs = [
+  { id: 1, name: "Dimych" },
+  { id: 2, name: "Andrey" },
+  { id: 3, name: "Sveta" },
+  { id: 4, name: "Sasha" },
+  { id: 5, name: "Viktor" },
+  { id: 6, name: "Valera" },
+];
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
