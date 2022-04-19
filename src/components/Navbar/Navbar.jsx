@@ -1,26 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
+import Nav from "./Nav/Nav";
 import classes from'./Navbar.module.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <nav className={classes.nav}>
-      <div className={classes.item}>
-        <NavLink to="/profile" className={({ isActive }) => isActive ? `${classes.activeLink}` : `${classes.item}`}>Profile</NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/dialogs" className={({ isActive }) => isActive ? `${classes.activeLink}` : `${classes.item}`}>Messages</NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/news" className={({ isActive }) => isActive ? `${classes.activeLink}` : `${classes.item}`}>News</NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/music" className={({ isActive }) => isActive ? `${classes.activeLink}` : `${classes.item}`}>Music</NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/settings" className={({ isActive }) => isActive ? `${classes.activeLink}` : `${classes.item}`}>Settings</NavLink>
-      </div>
-    </nav>
+    <div className={classes.nav}>
+      <Nav />
+      <Friends friendsName={props.state.friendsName} />
+    </div>
   );
 };
 
