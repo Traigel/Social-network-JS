@@ -1,4 +1,13 @@
-.item img {
+.item {
+  display: inline-block;
+  overflow: hidden;
   width: 45px;
+  margin: 3px;
+  text-align: center;
+}
+
+.item img {
+  width: 100%;
   border-radius: 20px;
+
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Friends from "./Friends/Friends";
 import Nav from "./Nav/Nav";
-import classes from'./Navbar.module.css';
+import classes from "./Navbar.module.css";
 
 const Navbar = (props) => {
   return (

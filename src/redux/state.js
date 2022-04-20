@@ -24,9 +24,10 @@ let state = {
   },
   sitebar: {
     friendsName: [
-      { id: 1, name: "Dimych" },
-      { id: 2, name: "Andrey" },
-      { id: 3, name: "Sveta" },
+      { img: 1, name: "Dimych" },
+      { img: 2, name: "Andrey" },
+      { img: 3, name: "Sveta" },
+      { img: 3, name: "Alex" },
     ],
   },
 };
