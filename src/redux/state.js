@@ -24,6 +24,7 @@ let state = {
       { id: 3, message: "Yo" },
       { id: 3, message: "Yo" },
     ],
+    newMessagesText: "New messages",
   },
   sitebar: {
     friendsName: [
@@ -48,6 +49,21 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
+  rerenderEntireTree (state);
+};
+
+export let addMessage = () => {
+  let newPost = {
+    id: 5,
+    message: state.dialogsPage.newMessagesText,
+  };
+  state.dialogsPage.messages.push(newPost);
+  state.dialogsPage.newMessagesText = '';
+  rerenderEntireTree (state);
+};
+
+export let updateNewMessageText = (newText) => {
+  state.dialogsPage.newMessagesText = newText;
   rerenderEntireTree (state);
 };
 
