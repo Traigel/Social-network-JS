@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+  console.log('qwe');
+};
 
 let state = {
   profilePage: {
@@ -24,7 +26,7 @@ let state = {
       { id: 3, message: "Yo" },
       { id: 3, message: "Yo" },
     ],
-    newMessagesText: "New messages",
+    newMessagesText: "New message",
   },
   sitebar: {
     friendsName: [
@@ -36,7 +38,7 @@ let state = {
   },
 };
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: 5,
     message: state.profilePage.newPostText,
@@ -47,24 +49,28 @@ export let addPost = () => {
   rerenderEntireTree (state);
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree (state);
 };
 
-export let addMessage = () => {
-  let newPost = {
+export const addMessage = () => {
+  let newMessage = {
     id: 5,
     message: state.dialogsPage.newMessagesText,
   };
-  state.dialogsPage.messages.push(newPost);
+  state.dialogsPage.messages.push(newMessage);
   state.dialogsPage.newMessagesText = '';
   rerenderEntireTree (state);
 };
 
-export let updateNewMessageText = (newText) => {
+export const updateNewMessageText = (newText) => {
   state.dialogsPage.newMessagesText = newText;
   rerenderEntireTree (state);
+};
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 };
 
 export default state;
