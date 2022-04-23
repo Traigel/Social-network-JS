@@ -2,7 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state"
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer"
 
 const MyPosts = (props) => {
   let postElements = props.posts.map((p) => (
@@ -15,10 +15,9 @@ const MyPosts = (props) => {
     props.dispatch(addPostActionCreator());
   };
 
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    let action = updateNewPostTextActionCreator(text);
-    props.dispatch(action);
+  let onPostChange = (e) => {
+    let text = e.target.value;
+    props.dispatch(updateNewPostTextActionCreator(text));
   };
 
   return (
@@ -28,7 +27,6 @@ const MyPosts = (props) => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={newPostElement}
             value={props.newPostText}
           />
         </div>
