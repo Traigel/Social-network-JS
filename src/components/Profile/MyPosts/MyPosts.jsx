@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
@@ -28,6 +27,7 @@ const MyPosts = (props) => {
           <textarea
             onChange={onPostChange}
             value={props.newPostText}
+            placeholder="My post"
           />
         </div>
         <div>
