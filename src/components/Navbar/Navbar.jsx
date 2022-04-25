@@ -7,7 +7,7 @@ const Navbar = (props) => {
   return (
     <div className={classes.nav}>
       <Nav />
-      <Friends friendsName={props.state.friendsName} />
+     {/* <Friends friendsName={props.state.friendsName} /> */}
     </div>
   );
 };

@@ -5,10 +5,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)}/>
+      <App store={store}/>
     </React.StrictMode>,
     document.getElementById("root")
   );
@@ -17,8 +17,8 @@ let rerenderEntireTree = (state) => {
 rerenderEntireTree(store.getState());
 
 store.subscribe ( () => {
-  let state = store.getState();
-  rerenderEntireTree(state);
+  // let state = store.getState();
+  rerenderEntireTree();
 });
 
 // If you want to start measuring performance in your app, pass a function
