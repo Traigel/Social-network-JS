@@ -1,5 +1,5 @@
 import React from "react";
-import Friends from "./Friends/Friends";
+import FriendsContainer from "./Friends/FriendsContainer";
 import Nav from "./Nav/Nav";
 import classes from "./Navbar.module.css";
 
@@ -7,7 +7,7 @@ const Navbar = (props) => {
   return (
     <div className={classes.nav}>
       <Nav />
-     {/* <Friends friendsName={props.state.friendsName} /> */}
+      {/* <FriendsContainer store={props.store} /> */}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import Friend from "./Friend/Friend";
 import classes from "./Friends.module.css";
 
 const Friends = (props) => {
-  let friendsElements = props.friendsName.map((el) => (
+  let friendsElements = props.sidebarPage.friendsName.map((el) => (
     <Friend name={el.name} />
   ));
   return (
