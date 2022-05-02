@@ -1,3 +1,11 @@
 .item img {
   width: 100px;
 }
+
+.selectedPage {
+  font-weight: bold;
+}
+
+.user {
+  display: inline-block;
+}
