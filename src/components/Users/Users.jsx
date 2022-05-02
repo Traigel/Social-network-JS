@@ -1,8 +1,10 @@
-import axios from "axios";
+import * as axios from "axios";
 import React from "react";
 import classes from "./Users.module.css";
+import userPhoto from "../../../src/assets/images/ava.png"
 
 class Users extends React.Component {
+  
   constructor(props) {
     super(props);
   }
@@ -22,7 +24,7 @@ class Users extends React.Component {
           <div key={u.id}>
             <div>
               <div className={classes.item}>
-                <img src={u.photoUrl} />
+                <img src={u.photos.small !== null ? u.photos.small : userPhoto } />
               </div>
               <div>
                 {u.followed ? (
@@ -46,12 +48,12 @@ class Users extends React.Component {
             </div>
             <div>
               <div>
-                <div>{u.fullname}</div>
+                <div>{u.name}</div>
                 <div>{u.status}</div>
               </div>
               <div>
-                <div>"{u.location.city}"</div>
-                <div>"{u.location.country}"</div>
+                <div>{"u.location.city"}</div>
+                <div>{"u.location.country"}</div>
               </div>
             </div>
           </div>
