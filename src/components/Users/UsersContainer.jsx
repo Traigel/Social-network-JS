@@ -12,28 +12,28 @@ class UsersContainer extends React.Component {          //Контейнерна
   }
 
   componentDidMount() {
-    this.props.toggleIsFetching(true);
+    this.props.toggleIsFetchingAC(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.toggleIsFetchingAC(false);
+        this.props.setUsersAC(response.data.items);
+        this.props.setTotalUsersCountAC(response.data.totalCount);
       });
   }
 
  onPageChanged = (pageNumber) => {
-      this.props.setCurrentPage(pageNumber);
-      this.props.toggleIsFetching(true);
+      this.props.setCurrentPageAC(pageNumber);
+      this.props.toggleIsFetchingAC(true);
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
         )
         .then((response) => {
-          this.props.toggleIsFetching(false);
-          this.props.setUsers(response.data.items);
+          this.props.toggleIsFetchingAC(false);
+          this.props.setUsersAC(response.data.items);
         });
     };
                       //Если isFetching = true, то отображается гифка, если false то нечего не отображается
@@ -46,8 +46,8 @@ class UsersContainer extends React.Component {          //Контейнерна
         currentPage={this.props.currentPage}
         onPageChanged={this.onPageChanged.bind(this)}
         users={this.props.users}
-        unfollow={this.props.unfollow}
-        follow={this.props.follow}
+        unfollowAC={this.props.unfollowAC}
+        followAC={this.props.followAC}
       />
     </>
   }
@@ -63,27 +63,4 @@ let mapStateToProps = (state) => {  //Данные котороые мы про�
   }
 };
 
-let mapDispatchToProps = (dispatch) => {  //При попытке изменить что-либо в компоненте
-  return {                                //отправляется запрос через dispatch
-    follow: (userId) => {                 //и в reduser меняется state
-      dispatch(followAC(userId));
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowAC(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageAC(pageNumber));
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountAC(totalCount));
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingAC(isFetching));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC} )(UsersContainer);
