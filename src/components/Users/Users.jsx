@@ -8,7 +8,7 @@ let Users = (props) => {
 
     let pages = [];
 
-    for (let i = 1; i <= pagesCount; i++) {
+    for (let i = 1; i <= 10; i++) {      //Ограничил показ страниц на 10 шт(для показа всех i <= pagesCount.lenght)
       pages.push(i);
     }
     
