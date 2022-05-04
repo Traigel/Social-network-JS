@@ -64,3 +64,17 @@ let mapStateToProps = (state) => {  //Данные котороые мы про�
 };
 
 export default connect(mapStateToProps, {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC} )(UsersContainer);
+
+
+/*let mapDispatchToProps = (dispatch) => {      для удобства сократил запись и пишу сразу в connect
+  return {
+    follow: (userId) => {
+      dispatch(followAC(userId));
+    },
+    unfollow: (userId) => {
+      dispatch(unfollowAC(userId));
+    },
+    setUsers: (users) => {
+      dispatch(setUsersAC(users));
+    },
+  ...*/
