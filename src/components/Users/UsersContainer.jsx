@@ -4,6 +4,7 @@ import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsF
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {          //Контейнерная компонента, обращаемся к ней из connectd
 
@@ -13,28 +14,21 @@ class UsersContainer extends React.Component {          //Контейнерна
 
   componentDidMount() {
     this.props.toggleIsFetchingAC(true);
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-        {withCredentials: true}
-      )
-      .then((response) => {
+
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
         this.props.toggleIsFetchingAC(false);
-        this.props.setUsersAC(response.data.items);
-        this.props.setTotalUsersCountAC(response.data.totalCount);
+        this.props.setUsersAC(data.items);
+        this.props.setTotalUsersCountAC(data.totalCount);
       });
   }
 
  onPageChanged = (pageNumber) => {
       this.props.setCurrentPageAC(pageNumber);
       this.props.toggleIsFetchingAC(true);
-      axios
-        .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true
-          })
-        .then((response) => {
+
+      usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
           this.props.toggleIsFetchingAC(false);
-          this.props.setUsersAC(response.data.items);
+          this.props.setUsersAC(data.items);
         });
     };
                       //Если isFetching = true, то отображается гифка, если false то нечего не отображается
