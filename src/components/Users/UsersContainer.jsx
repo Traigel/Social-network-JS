@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC } from "../../redux/users-reducer";
+import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleFollowingProgressAC, toggleIsFetchingAC, unfollowAC } from "../../redux/users-reducer";
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
@@ -43,6 +43,8 @@ class UsersContainer extends React.Component {          //Контейнерна
         users={this.props.users}
         unfollowAC={this.props.unfollowAC}
         followAC={this.props.followAC}
+        toggleFollowingProgressAC={this.props.toggleFollowingProgressAC}
+        followingInProgress={this.props.followingInProgress}      
       />
     </>
   }
@@ -54,12 +56,12 @@ let mapStateToProps = (state) => {  //Данные котороые мы про�
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
   }
 };
 
-export default connect(mapStateToProps, {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC} )(UsersContainer);
-
+export default connect(mapStateToProps, {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC, toggleFollowingProgressAC} )(UsersContainer);
 
 /*let mapDispatchToProps = (dispatch) => {      для удобства сократил запись и пишу сразу в connect
   return {
