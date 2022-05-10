@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { followTC, getUsersTC, setCurrentPageAC, toggleFollowingProgressAC, unfollowTC } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import * as axios from "axios";
 
 class UsersContainer extends React.Component {
   //Контейнерная компонента, обращаемся к ней из connectd
