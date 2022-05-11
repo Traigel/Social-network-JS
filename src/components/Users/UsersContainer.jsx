@@ -4,6 +4,7 @@ import { followTC, getUsersTC, setCurrentPageAC, toggleFollowingProgressAC, unfo
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import * as axios from "axios";
+import { withAuthRedirectHoc } from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
   //Контейнерная компонента, обращаемся к ней из connectd
@@ -50,7 +51,9 @@ let mapStateToProps = (state) => {  //Данные котороые мы про�
   }
 };
 
-export default connect(mapStateToProps, {followTC, setCurrentPageAC, unfollowTC, toggleFollowingProgressAC, getUsersTC} )(UsersContainer);
+let withRedirect = withAuthRedirectHoc(UsersContainer)
+
+export default connect(mapStateToProps, {followTC, setCurrentPageAC, unfollowTC, toggleFollowingProgressAC, getUsersTC} )(withRedirect);
 
 /*let mapDispatchToProps = (dispatch) => {      для удобства сократил запись и пишу сразу в connect
   return {
