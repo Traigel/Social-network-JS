@@ -5,7 +5,8 @@ import Dialogs from "./Dialogs";
 
 let mapStateYpProps = (state) => {
   return {
-    dialogsPage: state.dialogsPage
+    dialogsPage: state.dialogsPage,
+    isAuth: state.auth.isAuth,
   }
 };
 
