@@ -5,6 +5,7 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import * as axios from "axios";
 import { withAuthRedirectHoc } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
   //Контейнерная компонента, обращаемся к ней из connectd
@@ -51,9 +52,10 @@ let mapStateToProps = (state) => {  //Данные котороые мы про�
   }
 };
 
-let withRedirect = withAuthRedirectHoc(UsersContainer)
+export default compose(connect(mapStateToProps, {followTC, setCurrentPageAC, unfollowTC, toggleFollowingProgressAC, getUsersTC} ), withAuthRedirectHoc)(UsersContainer);
 
-export default connect(mapStateToProps, {followTC, setCurrentPageAC, unfollowTC, toggleFollowingProgressAC, getUsersTC} )(withRedirect);
+// let withRedirect = withAuthRedirectHoc(UsersContainer)
+// export default connect(mapStateToProps, {followTC, setCurrentPageAC, unfollowTC, toggleFollowingProgressAC, getUsersTC} )(withRedirect);
 
 /*let mapDispatchToProps = (dispatch) => {      для удобства сократил запись и пишу сразу в connect
   return {

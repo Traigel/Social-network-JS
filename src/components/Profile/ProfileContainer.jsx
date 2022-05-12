@@ -5,6 +5,7 @@ import { getUsersProfileTC } from "../../redux/profile-reducer";
 import Profile from "./Profile";
 import * as axios from "axios";
 import { withAuthRedirectHoc } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -15,11 +16,11 @@ class ProfileContainer extends React.Component {
     return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
-
-let AuthRedirectComponentHoc = withAuthRedirectHoc(ProfileContainer);
-
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-export default connect(mapStateToProps, { getUsersProfileTC })(AuthRedirectComponentHoc);
+export default compose(connect(mapStateToProps, { getUsersProfileTC }), withAuthRedirectHoc)(ProfileContainer);
+
+// let AuthRedirectComponentHoc = withAuthRedirectHoc(ProfileContainer);
+// export default connect(mapStateToProps, { getUsersProfileTC })(AuthRedirectComponentHoc);
